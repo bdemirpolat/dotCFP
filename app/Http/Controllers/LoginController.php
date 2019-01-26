@@ -42,12 +42,12 @@ class LoginController extends \App\Http\Controllers\Auth\LoginController
         try {
             /** @var User $createdUser */
             $createdUser = User::firstOrCreate([
-                'github_id' => $user->getId(),
                 'email' => $user->getEmail()
             ], [
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
                 'username' => $user->getNickname(),
+                'password' => bcrypt(substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') , 0 , 10 )),
                 'github_id' => $user->getId(),
                 'avatar' => $user->getAvatar(),
             ]);

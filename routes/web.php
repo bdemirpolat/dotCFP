@@ -11,11 +11,14 @@
 |
 */
 
+
 Route::redirect('/home', '/');
 
 Route::view('/', 'home')->name('home');
 
-Route::get('/login/github', 'LoginController@redirectToProvider')->name('login');
+Auth::routes();
+
+Route::get('/login/github', 'LoginController@redirectToProvider')->name('logingh');
 
 Route::get('/login/github/callback', 'LoginController@handleProviderCallback');
 
