@@ -16,7 +16,7 @@ Route::redirect('/home', '/');
 
 Route::view('/', 'home')->name('home');
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 Route::get('/login/github', 'LoginController@redirectToProvider')->name('logingh');
 
@@ -24,9 +24,9 @@ Route::get('/login/github/callback', 'LoginController@handleProviderCallback');
 
 Route::get('/committee', 'CommitteeController@index')->name('committee.index');
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::post('/logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+Route::post('/logout', ['as' => 'logout', 'uses' => 'LoginController@logout'])->middleware('verified');
 
+Route::group(['middleware' => 'auth'], function () {
     /**
      * User
      */

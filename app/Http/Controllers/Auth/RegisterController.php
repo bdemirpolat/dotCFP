@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
         $user->save();
+        $user->sendEmailVerificationNotification();
 
         return $user;
     }
