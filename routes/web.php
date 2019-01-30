@@ -24,9 +24,9 @@ Route::get('/login/github/callback', 'LoginController@handleProviderCallback');
 
 Route::get('/committee', 'CommitteeController@index')->name('committee.index');
 
-Route::post('/logout', ['as' => 'logout', 'uses' => 'LoginController@logout'])->middleware('verified');
+Route::post('/logout', ['as' => 'logout', 'uses' => 'LoginController@logout'])->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'verified'], function () {
     /**
      * User
      */
