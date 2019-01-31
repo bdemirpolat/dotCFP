@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -17,6 +19,17 @@ class VerificationController extends Controller
     | be re-sent if the user didn't receive the original email message.
     |
     */
+    
+    public function verify(Request $request)
+    {
+        if ($request->route('id') == $request->user()->getKey()) {
+            $user = User::where('id', $request->route('id'))
+                ->update(['email_verified_at' => now()]);
+            event(new Verified($request->user()));
+        }
+        return redirect($this->redirectPath())->with('verified', true);
+    }
+
 
     use VerifiesEmails;
 
