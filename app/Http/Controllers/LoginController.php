@@ -46,6 +46,7 @@ class LoginController extends \App\Http\Controllers\Auth\LoginController
             ], [
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
+                'email_verified_at' => new \DateTime(),
                 'username' => $user->getNickname(),
                 'password' => bcrypt(substr(str_shuffle('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789') , 0 , 10 )),
                 'github_id' => $user->getId(),
