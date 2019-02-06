@@ -52,7 +52,7 @@ class User extends Authenticatable implements MustVerifyEmail,CanResetPasswordCo
      */
     protected $dates = [
         'last_login',
-        'deleted_at',
+        'deleted_at'
     ];
 
     /**
