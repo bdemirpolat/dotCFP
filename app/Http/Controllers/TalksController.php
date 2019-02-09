@@ -175,7 +175,7 @@ class TalksController extends Controller
     public function votes($talk)
     {
         $votes = Vote::with('user')->where('talk_id',$talk->id)->get();
-        return view('talks.votes')->with('votes',$votes);
+        return view('talks.votes',['votes' => $votes, 'talk' => $talk->title]);
 
     }
 }
