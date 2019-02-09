@@ -12,7 +12,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laracasts/flash": "^3.0",
         "laravel/framework": "5.7.*",
-        "laravel/socialite": "^3.0",
+        "laravel/socialite": "4.0",
         "laravel/tinker": "~1.0",
         "roave/security-advisories": "dev-master",
         "watson/validating": "^3.1"
