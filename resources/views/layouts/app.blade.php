@@ -52,8 +52,6 @@
                     @if(auth()->check() && auth()->user()->inCommittee())
                         <li class="{{ Request::is('users') ? 'active' : '' }}"><a href="{{ route('users.index') }}"><i
                                         class="fa fa-users"></i> Users</a></li>
-                    @endif
-                    @if(auth()->check() and auth()->user()->inCommittee())
                         <li class="dropdown{{ Request::is('talks') ? ' active' : '' }}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true"
