@@ -45,7 +45,7 @@
                             @foreach($talks as $talk)
                                 <tr>
                                     @if(auth()->user()->inCommittee())
-                                        <td>{{ $talk->average_vote }}</td>
+                                        <td><a href="talks/{{ $talk->title }}/votes">{{ $talk->average_vote }}</a></td>
                                     @endif
                                     <td>@if($talk->is_favorite)<i title="Favorite" class="fa fa-star"></i>@endif
 

@@ -170,4 +170,12 @@ class TalksController extends Controller
 
         return redirect()->route('talks.show', $talk->slug);
     }
+
+
+    public function votes($talk)
+    {
+        $votes = Vote::with('user')->where('talk_id',$talk->id)->get();
+        return view('talks.votes')->with('votes',$votes);
+
+    }
 }

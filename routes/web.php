@@ -55,7 +55,7 @@ Route::group(['middleware' => 'verified'], function () {
     Route::post('/talks/{talk}/approve', 'TalksController@approveAction')->name('talks.approve')->middleware(['role:admin']);
 
     Route::put('/talks/{talk}/update', 'TalksController@update')->name('talks.update')->middleware(['can:update,talk']);
-
+    Route::get('/talks/{talk}/votes', 'TalksController@votes')->name('talks.votes')->middleware(['role:admin|reviewer']);
     /**
      * Comments
      */
